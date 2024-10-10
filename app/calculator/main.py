@@ -1,5 +1,3 @@
-# app/calculator/__init__.py
-
 class Calculator:
     history = []
 
@@ -43,9 +41,7 @@ class Calculator:
 
     @classmethod
     def get_last_calculation(cls) -> str:
-        if cls.history:
-            return cls.history[-1]
-        return "No calculations performed yet."
+        return cls.history[-1] if cls.history else "No calculations performed yet."
 
     @classmethod
     def clear_history(cls):

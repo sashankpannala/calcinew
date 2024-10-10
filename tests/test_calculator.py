@@ -21,6 +21,14 @@ def test_divide_by_zero():
     with pytest.raises(ValueError, match="Division by zero"):
         Calculator.divide(5, 0)
 
+def test_square():
+    assert Calculator.square(4) == 16
+    assert Calculator.history[-1] == "Squared 4 = 16"
+
+def test_cube():
+    assert Calculator.cube(3) == 27
+    assert Calculator.history[-1] == "Cubed 3 = 27"
+
 def test_get_last_calculation():
     Calculator.clear_history()
     Calculator.add(1, 1)
@@ -32,11 +40,3 @@ def test_clear_history():
     assert len(Calculator.history) == 1
     Calculator.clear_history()
     assert len(Calculator.history) == 0
-
-def test_square():
-    assert Calculator.square(4) == 16
-    assert Calculator.history[-1] == "Squared 4 = 16"
-
-def test_cube():
-    assert Calculator.cube(3) == 27
-    assert Calculator.history[-1] == "Cubed 3 = 27"

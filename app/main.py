@@ -1,50 +1,15 @@
-class Calculator:
-    history = []
+from app.calculator import Calculator
 
-    @staticmethod
-    def add(a: float, b: float) -> float:
-        result = a + b
-        Calculator.history.append(f"Added {a} + {b} = {result}")
-        return result
+def run_calculator():
+    a, b = 10, 5
+    print(f"Adding {a} + {b} = {Calculator.add(a, b)}")
+    print(f"Subtracting {a} - {b} = {Calculator.subtract(a, b)}")
+    print(f"Multiplying {a} * {b} = {Calculator.multiply(a, b)}")
+    print(f"Dividing {a} / {b} = {Calculator.divide(a, b)}")
+    print(f"Squaring {a} = {Calculator.square(a)}")
+    print(f"Cubing {a} = {Calculator.cube(a)}")
 
-    @staticmethod
-    def subtract(a: float, b: float) -> float:
-        result = a - b
-        Calculator.history.append(f"Subtracted {a} - {b} = {result}")
-        return result
+    print(f"Last calculation: {Calculator.get_last_calculation()}")
 
-    @staticmethod
-    def multiply(a: float, b: float) -> float:
-        result = a * b
-        Calculator.history.append(f"Multiplied {a} * {b} = {result}")
-        return result
-
-    @staticmethod
-    def divide(a: float, b: float) -> float:
-        if b == 0:
-            raise ValueError("Division by zero")
-        result = a / b
-        Calculator.history.append(f"Divided {a} / {b} = {result}")
-        return result
-
-    @staticmethod
-    def square(a: float) -> float:
-        result = a ** 2
-        Calculator.history.append(f"Squared {a} = {result}")
-        return result
-
-    @staticmethod
-    def cube(a: float) -> float:
-        result = a ** 3
-        Calculator.history.append(f"Cubed {a} = {result}")
-        return result
-
-    @classmethod
-    def get_last_calculation(cls) -> str:
-        if cls.history:
-            return cls.history[-1]
-        return "No calculations performed yet."
-
-    @classmethod
-    def clear_history(cls):
-        cls.history.clear()
+if __name__ == "__main__":
+    run_calculator()
